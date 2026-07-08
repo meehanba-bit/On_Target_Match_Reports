@@ -262,7 +262,41 @@ body.editing [data-edit]:hover{background:rgba(254,107,3,.07)}
   </div>
 </footer>
 
+<script>
+fetch('/reports.json')
+  .then(response => response.json())
+  .then(reports => {
+    const latest = reports[0];
+    const previous = reports.slice(1);
 
+    document.getElementById('latestReport').innerHTML = `
+      <div class="tiles">
+        <a class="tile feature" href="${latest.url}">
+          <span class="feat-flag">Latest report</span>
+          <div class="fmain">
+            <span class="tag gaa">${latest.sport} · ${latest.level}</span>
+            <div class="matchup">${latest.title}</div>
+            <div class="when">${latest.date} · ${latest.summary}</div>
+            <span class="read">Read full report <span class="arr" aria-hidden="true">→</span></span>
+          </div>
+          <div class="fscore">
+            <div class="row"><span class="nm">${latest.homeTeam}</span><span class="big ${latest.winner === 'home' ? 'win' : ''} num">${latest.homeScore}</span></div>
+            <div class="row"><span class="nm">${latest.awayTeam}</span><span class="big ${latest.winner === 'away' ? 'win' : ''} num">${latest.awayScore}</span></div>
+          </div>
+        </a>
+      </div>
+    `;
+
+    document.getElementById('previousReports').innerHTML = previous.map(report => `
+      <a class="tile" href="${report.url}">
+        <span class="tag gaa">${report.sport} · ${report.level}</span>
+        <div class="matchup">${report.title}</div>
+        <div class="when">${report.date} · ${report.summary}</div>
+        <span class="read">Read report <span class="arr" aria-hidden="true">→</span></span>
+      </a>
+    `).join('');
+  });
+</script>
 
 
 
