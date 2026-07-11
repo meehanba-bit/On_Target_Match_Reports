@@ -1,5 +1,18 @@
 [
-   
+   {
+    "title": "Mayo v Cork",
+    "sport": "Gaelic Football",
+    "level": "Senior",
+    "competition": "Senior Championship 2026",
+    "date": "27 June 2026",
+    "summary": "Match analysis",
+    "url": "/reports/mayo-v-cork/",
+    "homeTeam": "Mayo",
+    "awayTeam": "Cork",
+    "homeScore": "0-23",
+    "awayScore": "0-18",
+    "winner": "home"
+  },
    {
     "title": "Louth v Monaghan",
     "sport": "Gaelic Football",
